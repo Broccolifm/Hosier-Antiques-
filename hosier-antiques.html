@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hosier Antiques — Architectural Hardware &amp; House Details</title>
+
+<!--
+  =====================================================================
+  HOSIER ANTIQUES — one page site
+  Edit guide:
+  - All placeholder photography lives in <div class="ph"> blocks.
+    Replace by deleting the ph__label span and adding:
+    background-image:url('your-image.jpg'); background-size:cover;
+    to the .ph element, OR just put an <img> tag inside it.
+  - All product copy is inside .product-card blocks in the
+    "LATEST FINDS" section — marked with EDIT comments.
+  - Colours and fonts are set once as CSS variables at the top of
+    the <style> block, under :root.
+  =====================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+<style>
+
+  /* ============================= TOKENS ============================= */
+  :root{
+    --cream:        #f4eee0;      /* base background */
+    --cream-deep:    #ece2cd;      /* secondary panel bg */
+    --ink:          #211a13;      /* near-black warm brown, text */
+    --wood:         #2b2119;      /* deep brown/black panel bg */
+    --wood-deep:     #17120c;      /* darkest panel bg */
+    --brass:        #a97e3c;      /* primary brass accent */
+    --brass-light:   #cba46a;      /* lighter brass, for dark panels */
+    --brass-dim:     #8a6a38;      /* brass for hairlines */
+    --stone:        #b9ae98;      /* muted stone/faded paint */
+    --line:         rgba(33,26,19,0.14);
+
+    --display: 'Fraunces', Georgia, serif;
+    --body:    'Source Serif 4', Georgia, serif;
+
+    --wrap: 1200px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  :focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3,h4{
+    font-family:var(--display);
+    font-weight:500;
+    line-height:1.12;
+    letter-spacing:0.2px;
+  }
+
+  .eyebrow{
+    font-family:var(--body);
+    font-size:12.5px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--brass-dim);
+    font-weight:600;
+  }
+  .panel-dark .eyebrow{ color:var(--brass-light); }
+
+  .btn{
+    display:inline-block;
+    font-family:var(--body);
+    font-size:14px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:15px 34px;
+    border:1px solid var(--brass);
+    color:var(--ink);
+    background:transparent;
+    cursor:pointer;
+    transition:background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn:hover{ background:var(--brass); color:var(--cream); }
+
+  .btn--solid{
+    background:var(--brass);
+    color:var(--cream);
+  }
+  .btn--solid:hover{ background:var(--brass-dim); border-color:var(--brass-dim); }
+
+  .btn--on-dark{
+    border-color:var(--brass-light);
+    color:var(--cream);
+  }
+  .btn--on-dark:hover{ background:var(--brass-light); color:var(--wood-deep); }
+
+  /* ---- Placeholder image blocks ---- */
+  .ph{
+    position:relative;
+    width:100%;
+    background:
+      repeating-linear-gradient(135deg, rgba(33,26,19,0.06) 0 2px, transparent 2px 14px),
+      linear-gradient(160deg, #d9cdb1, #c3b493);
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .ph__label{
+    display:block;
+    width:100%;
+    padding:10px 14px;
+    font-size:11px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--wood);
+    background:rgba(244,238,224,0.72);
+    font-family:var(--body);
+  }
+
+  /* ============================= HEADER ============================= */
+  header{
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 0;
+    gap:24px;
+  }
+  .logo{
+    font-family:var(--display);
+    font-size:24px;
+    letter-spacing:1.5px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .logo small{
+    display:block;
+    font-family:var(--body);
+    font-size:10.5px;
+    letter-spacing:2.4px;
+    text-transform:uppercase;
+    color:var(--brass-dim);
+    font-weight:600;
+    margin-top:3px;
+  }
+
+  nav.primary-nav{ flex:1; }
+  nav.primary-nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+  }
+  nav.primary-nav a{
+    font-size:13.5px;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    font-weight:600;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.primary-nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:1px;
+    background:var(--brass);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .25s ease;
+  }
+  nav.primary-nav a:hover::after{ transform:scaleX(1); }
+
+  .header-icons{
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+  .icon-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:34px; height:34px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    background:none;
+    cursor:pointer;
+  }
+  .icon-btn svg{ width:16px; height:16px; stroke:var(--ink); fill:none; }
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    flex-direction:column;
+    gap:5px;
+  }
+  .nav-toggle span{ width:24px; height:1.5px; background:var(--ink); display:block; }
+
+  /* ============================= HERO ============================= */
+  .hero{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(23,18,12,0.35), rgba(23,18,12,0.72)),
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 20px),
+      linear-gradient(150deg,#3a2c1e,#1a1410 70%);
+    color:var(--cream);
+    padding:150px 32px 130px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    /* decorative brass keyhole motif — the signature mark */
+    content:"";
+    position:absolute;
+    right:6%;
+    top:50%;
+    transform:translateY(-50%);
+    width:340px; height:340px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='78' r='34' fill='none' stroke='%23a97e3c' stroke-width='1'/%3E%3Cpath d='M85 100 L72 158 L128 158 L115 100 Z' fill='none' stroke='%23a97e3c' stroke-width='1'/%3E%3C/svg%3E") center/contain no-repeat;
+    opacity:0.16;
+    pointer-events:none;
+  }
+  .hero__inner{ position:relative; max-width:760px; margin:0 auto; }
+  .hero .eyebrow{ color:var(--brass-light); }
+  .hero h1{
+    font-size:clamp(38px,6vw,64px);
+    margin:18px 0 6px;
+    color:var(--cream);
+  }
+  .hero__sub{
+    font-family:var(--body);
+    font-style:italic;
+    font-size:clamp(16px,2vw,20px);
+    color:var(--stone);
+    margin-bottom:6px;
+  }
+  .hero__strap{
+    font-family:var(--display);
+    font-weight:400;
+    font-style:italic;
+    font-size:clamp(18px,2.3vw,24px);
+    color:var(--brass-light);
+    margin:14px 0 40px;
+  }
+  .hero-rule{
+    width:64px; height:1px;
+    background:var(--brass);
+    margin:26px auto;
+  }
+
+  /* ============================= INTRO ============================= */
+  .intro{
+    padding:90px 32px 70px;
+    text-align:center;
+  }
+  .intro__inner{ max-width:640px; margin:0 auto; }
+  .intro h2{ font-size:clamp(26px,3.4vw,34px); margin:16px 0 20px; }
+  .intro p{ font-size:17.5px; color:#4a3f32; }
+
+  /* ============================= SECTION GENERIC ============================= */
+  section{ padding:0 32px; }
+  .section-head{
+    max-width:640px;
+    margin:0 auto 44px;
+    text-align:center;
+  }
+  .section-head h2{ font-size:clamp(28px,3.6vw,38px); margin-top:14px; }
+  .section-head p{ margin-top:14px; color:#4a3f32; font-size:16px; }
+  .panel-dark .section-head p{ color:var(--stone); }
+
+  /* ============================= CATEGORY TILES ============================= */
+  .categories{ padding:20px 32px 100px; }
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .cat-tile{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .cat-tile .ph{ position:absolute; inset:0; border:none; }
+  .cat-tile::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(23,18,12,0) 40%, rgba(23,18,12,0.82) 100%);
+  }
+  .cat-tile__text{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    z-index:2;
+    padding:22px;
+    color:var(--cream);
+  }
+  .cat-tile__text .eyebrow{ color:var(--brass-light); }
+  .cat-tile__text h3{
+    font-size:20px;
+    margin-top:6px;
+    font-weight:500;
+  }
+  .cat-tile{ cursor:pointer; transition:transform .35s ease; }
+  .cat-tile:hover{ transform:translateY(-4px); }
+
+  /* ============================= FEATURED COLLECTION ============================= */
+  .featured{
+    background:var(--cream-deep);
+    padding:100px 32px;
+  }
+  .featured__grid{
+    max-width:var(--wrap);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  .featured__img .ph{ aspect-ratio:5/4; }
+  .featured__copy .eyebrow{ margin-bottom:14px; display:block; }
+  .featured__copy h2{ font-size:clamp(28px,3.6vw,40px); margin-bottom:18px; }
+  .featured__copy p{ color:#4a3f32; font-size:16.5px; margin-bottom:30px; max-width:440px; }
+
+  /* ============================= PRODUCT GRID ============================= */
+  .latest-finds{ padding:100px 32px 110px; }
+  .finds-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:34px 28px;
+    max-width:var(--wrap);
+    margin:0 auto;
+  }
+  .product-card{ display:flex; flex-direction:column; }
+  .product-card .ph{ aspect-ratio:1/1.05; margin-bottom:16px; }
+  .product-card h3{
+    font-size:16.5px;
+    font-weight:500;
+    margin-bottom:6px;
+  }
+  .product-card p.desc{
+    font-size:13.8px;
+    color:#5a4d3d;
+    margin-bottom:10px;
+    flex-grow:1;
+  }
+  .product-card .price{
+    font-family:var(--body);
+    font-weight:600;
+    color:var(--brass-dim);
+    font-size:15px;
+    margin-bottom:14px;
+  }
+  .product-card .btn{
+    align-self:flex-start;
+    padding:11px 22px;
+    font-size:12px;
+    letter-spacing:1.3px;
+  }
+  .finds-footer{
+    text-align:center;
+    margin-top:56px;
+  }
+
+  /* ============================= EDITORIAL ============================= */
+  .editorial{
+    background:
+      linear-gradient(180deg, rgba(23,18,12,0.55), rgba(23,18,12,0.86)),
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 22px),
+      linear-gradient(160deg,#2f241a,#171009);
+    color:var(--cream);
+    padding:110px 32px;
+  }
+  .editorial__grid{
+    max-width:var(--wrap);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .editorial__copy h2{
+    font-size:clamp(28px,3.8vw,42px);
+    color:var(--cream);
+    margin:14px 0 22px;
+  }
+  .editorial__copy p{
+    color:var(--stone);
+    font-size:17px;
+    max-width:480px;
+    margin-bottom:30px;
+  }
+  .editorial__img .ph{ aspect-ratio:6/5; border-color:rgba(244,238,224,0.18); }
+  .editorial__img .ph__label{ background:rgba(23,18,12,0.6); color:var(--cream); }
+
+  /* ============================= NEWSLETTER ============================= */
+  .newsletter{
+    padding:100px 32px;
+    text-align:center;
+  }
+  .newsletter__box{
+    max-width:560px;
+    margin:0 auto;
+    padding:56px 44px;
+    border:1px solid var(--brass);
+    background:var(--cream-deep);
+  }
+  .newsletter h2{ font-size:clamp(26px,3.2vw,34px); margin:14px 0 14px; }
+  .newsletter p{ color:#4a3f32; margin-bottom:30px; }
+  .newsletter-form{
+    display:flex;
+    gap:12px;
+    max-width:400px;
+    margin:0 auto;
+  }
+  .newsletter-form input[type="email"]{
+    flex:1;
+    padding:13px 16px;
+    border:1px solid var(--line);
+    background:var(--cream);
+    font-family:var(--body);
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .newsletter-form input[type="email"]::placeholder{ color:#8a7c66; }
+  .newsletter-form .btn{ white-space:nowrap; padding:13px 24px; }
+
+  /* ============================= FOOTER ============================= */
+  footer{
+    background:var(--wood-deep);
+    color:var(--stone);
+    padding:80px 32px 30px;
+  }
+  .footer-grid{
+    max-width:var(--wrap);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:50px;
+    border-bottom:1px solid rgba(244,238,224,0.14);
+  }
+  .footer-brand .logo{ color:var(--cream); }
+  .footer-brand p{
+    margin-top:16px;
+    font-size:14.5px;
+    max-width:280px;
+    color:var(--stone);
+  }
+  footer h4{
+    font-family:var(--body);
+    font-size:12.5px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:18px;
+    font-weight:600;
+  }
+  footer ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
+  footer ul a{ font-size:14.5px; color:var(--stone); transition:color .2s ease; }
+  footer ul a:hover{ color:var(--cream); }
+  .footer-bottom{
+    max-width:var(--wrap);
+    margin:0 auto;
+    padding-top:26px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:12.5px;
+    color:#7a6d59;
+  }
+
+  /* ============================= RESPONSIVE ============================= */
+  @media (max-width:980px){
+    .cat-grid{ grid-template-columns:repeat(2,1fr); }
+    .finds-grid{ grid-template-columns:repeat(2,1fr); }
+    .featured__grid, .editorial__grid{ grid-template-columns:1fr; }
+    .editorial__img{ order:-1; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+  }
+
+  @media (max-width:760px){
+    nav.primary-nav{
+      position:fixed;
+      top:73px; left:0; right:0;
+      background:var(--cream);
+      border-bottom:1px solid var(--line);
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .3s ease;
+    }
+    nav.primary-nav.open{ max-height:420px; }
+    nav.primary-nav ul{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:24px 32px;
+      gap:20px;
+    }
+    .nav-toggle{ display:flex; }
+    .hero{ padding:110px 24px 90px; }
+    .hero::before{ opacity:0.09; width:240px; height:240px; }
+    .intro{ padding:70px 24px 50px; }
+    .categories{ padding:10px 24px 70px; }
+    .cat-grid{ grid-template-columns:1fr; }
+    .featured, .editorial, .latest-finds, .newsletter{ padding-left:24px; padding-right:24px; }
+    .finds-grid{ grid-template-columns:repeat(2,1fr); gap:26px 18px; }
+    .footer-grid{ grid-template-columns:1fr; gap:34px; }
+    .newsletter__box{ padding:40px 26px; }
+    .newsletter-form{ flex-direction:column; }
+  }
+
+  @media (max-width:460px){
+    .finds-grid{ grid-template-columns:1fr 1fr; }
+    .logo{ font-size:19px; }
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ============================= HEADER ============================= -->
+  <header>
+    <div class="wrap header-inner">
+      <a href="#top" class="logo">
+        HOSIER ANTIQUES
+        <small>Architectural Hardware &amp; House Details</small>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav">
+        <ul>
+          <li><a href="#latest-finds">New Finds</a></li>
+          <li><a href="#categories">Architectural Hardware</a></li>
+          <li><a href="#categories">House Details</a></li>
+          <li><a href="#categories">Brass &amp; Candleware</a></li>
+          <li><a href="#categories">Artwork &amp; Mirrors</a></li>
+          <li><a href="#editorial">About</a></li>
+          <li><a href="#newsletter">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-icons">
+        <!-- Search icon placeholder -->
+        <button class="icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+        </button>
+        <!-- Basket icon placeholder -->
+        <button class="icon-btn" aria-label="Basket">
+          <svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 11a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <span class="eyebrow">Est. in the trade of old things</span>
+      <h1>HOSIER ANTIQUES</h1>
+      <p class="hero__sub">Architectural Hardware &amp; House Details</p>
+      <p class="hero__strap">For Old Houses and New Stories</p>
+      <div class="hero-rule"></div>
+      <a href="#latest-finds" class="btn btn--on-dark">Shop Latest Finds</a>
+    </div>
+  </section>
+
+  <!-- ============================= INTRO ============================= -->
+  <section class="intro">
+    <div class="intro__inner">
+      <span class="eyebrow">Sourced Slowly</span>
+      <h2>Objects with somewhere to have been</h2>
+      <p>Hosier Antiques sources decorative antiques, architectural hardware and timeless house details for period homes, country interiors and collected spaces.</p>
+    </div>
+  </section>
+
+  <!-- ============================= SHOP BY CATEGORY ============================= -->
+  <section class="categories" id="categories">
+    <div class="section-head">
+      <span class="eyebrow">Shop by Category</span>
+      <h2>Find your details</h2>
+    </div>
+
+    <div class="wrap" style="padding:0;">
+      <div class="cat-grid">
+
+        <!-- EDIT: replace .ph background/img for each category photograph -->
+        <div class="cat-tile">
+          <div class="ph"><span class="ph__label">Image placeholder: architectural hardware</span></div>
+          <div class="cat-tile__text">
+            <span class="eyebrow">Salvage &amp; Fittings</span>
+            <h3>Architectural Hardware</h3>
+          </div>
+        </div>
+
+        <div class="cat-tile">
+          <div class="ph"><span class="ph__label">Image placeholder: brass candleware</span></div>
+          <div class="cat-tile__text">
+            <span class="eyebrow">Warm Brass</span>
+            <h3>Brass &amp; Candleware</h3>
+          </div>
+        </div>
+
+        <div class="cat-tile">
+          <div class="ph"><span class="ph__label">Image placeholder: country house decor</span></div>
+          <div class="cat-tile__text">
+            <span class="eyebrow">Collected Interiors</span>
+            <h3>Country House Decor</h3>
+          </div>
+        </div>
+
+        <div class="cat-tile">
+          <div class="ph"><span class="ph__label">Image placeholder: framed prints and mirrors</span></div>
+          <div class="cat-tile__text">
+            <span class="eyebrow">Walls &amp; Reflections</span>
+            <h3>Framed Prints &amp; Mirrors</h3>
+          </div>
+        </div>
+
+        <div class="cat-tile">
+          <div class="ph"><span class="ph__label">Image placeholder: desk and study objects</span></div>
+          <div class="cat-tile__text">
+            <span class="eyebrow">Quiet Corners</span>
+            <h3>Desk &amp; Study Objects</h3>
+          </div>
+        </div>
+
+        <div class="cat-tile">
+          <div class="ph"><span class="ph__label">Image placeholder: garden and salvage</span></div>
+          <div class="cat-tile__text">
+            <span class="eyebrow">Weathered Outdoors</span>
+            <h3>Garden &amp; Salvage</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= FEATURED COLLECTION ============================= -->
+  <section class="featured">
+    <div class="featured__grid">
+      <div class="featured__img">
+        <!-- EDIT: replace with a featured collection photograph -->
+        <div class="ph" style="aspect-ratio:5/4;"><span class="ph__label">Image placeholder: featured collection — the hallway edit</span></div>
+      </div>
+      <div class="featured__copy">
+        <span class="eyebrow">Featured Collection</span>
+        <h2>The Hallway Edit</h2>
+        <p>A gathering of door furniture, hooks and hallway details for the rooms guests see first — chosen for honest wear and good weight in the hand.</p>
+        <a href="#latest-finds" class="btn">View the Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= LATEST FINDS ============================= -->
+  <section class="latest-finds" id="latest-finds">
+    <div class="section-head">
+      <span class="eyebrow">Just In</span>
+      <h2>Latest Finds</h2>
+      <p>New arrivals from house clearances, salvage yards and old workshops — added as they're found.</p>
+    </div>
+
+    <div class="finds-grid">
+
+      <!-- EDIT: each block below is one product card — swap image, title, description, price -->
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Vintage Brass Horse &amp; Cart Ornament</h3>
+        <p class="desc">A small cast brass study, softened with age — a good mantel piece.</p>
+        <p class="price">£68</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Framed Country House Bathroom Watercolour</h3>
+        <p class="desc">Original watercolour in a worn gilt frame, gently faded with time.</p>
+        <p class="price">£145</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Vintage Norwegian Stone Desk Pot</h3>
+        <p class="desc">Hand-turned stone vessel, useful for pens, brushes or cut flowers.</p>
+        <p class="price">£54</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Vintage Brass Mouse Figurine</h3>
+        <p class="desc">A well-loved brass mouse with warm, worn patina — a quiet companion.</p>
+        <p class="price">£32</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Rustic Tavern Scene Framed Print</h3>
+        <p class="desc">An old tavern interior print in a simple dark wood frame.</p>
+        <p class="price">£78</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Brass Chamberstick Candle Holder</h3>
+        <p class="desc">A traditional carrying chamberstick with finger loop, in aged brass.</p>
+        <p class="price">£46</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Green Metal Storage Box</h3>
+        <p class="desc">Faded green tin box with hinged lid — sturdy, useful storage.</p>
+        <p class="price">£38</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+      <div class="product-card">
+        <div class="ph"><span class="ph__label">Image placeholder</span></div>
+        <h3>Decorative Cast Iron Drawer Pull</h3>
+        <p class="desc">Reclaimed cast iron pull with foliate detail, ready to refit.</p>
+        <p class="price">£14</p>
+        <a href="#" class="btn">View Item</a>
+      </div>
+
+    </div>
+
+    <div class="finds-footer">
+      <a href="#" class="btn btn--solid">View All New Finds</a>
+    </div>
+  </section>
+
+  <!-- ============================= EDITORIAL ============================= -->
+  <section class="editorial panel-dark" id="editorial">
+    <div class="editorial__grid">
+      <div class="editorial__img">
+        <!-- EDIT: replace with an editorial styling photograph -->
+        <div class="ph"><span class="ph__label">Image placeholder: styled house details</span></div>
+      </div>
+      <div class="editorial__copy">
+        <span class="eyebrow">Notes on Style</span>
+        <h2>House Details Worth Saving</h2>
+        <p>The smallest objects often carry the most character — a worn brass handle, a chamberstick, a framed print, a useful box, a piece of old metalwork. Hosier selects pieces that feel settled, honest and ready for their next home.</p>
+        <a href="#latest-finds" class="btn btn--on-dark">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= NEWSLETTER ============================= -->
+  <section class="newsletter" id="newsletter">
+    <div class="newsletter__box">
+      <span class="eyebrow">Stay in Touch</span>
+      <h2>Join The Hosier List</h2>
+      <p>Receive new finds, sourcing notes and occasional collections.</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit" class="btn btn--solid">Sign Up</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">HOSIER ANTIQUES</a>
+        <p>Architectural hardware and house details, sourced for old houses and new stories.</p>
+      </div>
+
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#latest-finds">New Finds</a></li>
+          <li><a href="#categories">Architectural Hardware</a></li>
+          <li><a href="#categories">House Details</a></li>
+          <li><a href="#categories">Brass &amp; Candleware</a></li>
+          <li><a href="#categories">Artwork &amp; Mirrors</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#editorial">About</a></li>
+          <li><a href="#newsletter">Contact</a></li>
+          <li><a href="#">Delivery</a></li>
+          <li><a href="#">Sell to Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>The Old Coach House</li>
+          <li>Market Square</li>
+          <!-- EDIT: replace with real address / hours / contact details -->
+          <li>Open Thurs–Sat, 10–5</li>
+          <li><a href="mailto:hello@hosierantiques.example">hello@hosierantiques.example</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hosier Antiques. All rights reserved.</span>
+      <span>Privacy &nbsp;·&nbsp; Terms &nbsp;·&nbsp; Delivery &amp; Returns</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    navToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    // Close mobile nav after selecting a link
+    primaryNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
